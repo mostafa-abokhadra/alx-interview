@@ -1,5 +1,11 @@
 #!/usr/bin/python3
+"""abokhadra pascal's algorithm"""
+
+
 def pascal_triangle(n):
+    """a list of lists, each cell in a list
+    is the sum of the above 2 cells
+    """
     if n <= 0:
         return []
     a_list = []
