@@ -8,16 +8,14 @@ def pascal_triangle(n):
     """
     if n <= 0:
         return []
-    # a_list = []
     pascal = [[1]]
-    idx = 0
     for i in range(2, n + 1):
         a_list = [None] * i
         a_list[0] = 1
         a_list[-1] = 1
-        if i == 2:
-            pascal.append(list(a_list))
-            continue
+        # if i == 2:
+        #     pascal.append(list(a_list))
+        #     continue
         idx = 1
         for j in range(0, len(pascal[-1])):
             if j == len(pascal[-1]) - 1:
