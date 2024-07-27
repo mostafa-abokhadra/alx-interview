@@ -12,7 +12,7 @@ def pascal_triangle(n):
         idx = 1
         for j in range(0, len(pascal[-1])):
             if j == len(pascal[-1]) - 1:
-                break;
+                break
             a_list[idx] = pascal[-1][j] + pascal[-1][j + 1]
             idx += 1
         pascal.append(list(a_list))
