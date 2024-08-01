@@ -41,4 +41,3 @@ def canUnlockAll(boxes):
         return False
     all_locked = [i for i in range(1, len(boxes))]
     return solve(boxes, boxes[0], all_locked)
-    
