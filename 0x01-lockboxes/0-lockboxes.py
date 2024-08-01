@@ -9,7 +9,19 @@
     The first box boxes[0] is unlocked.
     task: determines if all the boxes can be opened.
 """
-
+def solve(boxes, oneBox, still_locked):
+    if len(still_locked) == 0:
+        # print("i got here")
+        return True
+    for key in oneBox:
+        if not(key in still_locked):
+            continue
+        still_locked.remove(key)
+        solve(boxes, boxes[key], still_locked)
+        if len(still_locked) == 0:
+            # print("i got here")
+            return True
+    return False
 
 def canUnlockAll(boxes):
     """
@@ -22,4 +34,5 @@ def canUnlockAll(boxes):
         true if all boxes can be opened
         else return False
     """
-    [[1, 4, 6], [2], [0, 4, 1], [5, 6, 2], [3], [4, 1], [6]]
+    all_locked = [i for i in range(1, len(boxes))]
+    return solve(boxes, boxes[0], all_locked)
