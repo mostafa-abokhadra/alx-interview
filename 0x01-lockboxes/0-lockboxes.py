@@ -35,8 +35,10 @@ def canUnlockAll(boxes):
         true if all boxes can be opened
         else return False
     """
-    if boxes:
-        all_locked = [i for i in range(1, len(boxes))]
-        return solve(boxes, boxes[0], all_locked)
-    else:
-        return True
+    if (type(boxes)) is not list:
+        return False
+    elif (len(boxes)) == 0:
+        return False
+    all_locked = [i for i in range(1, len(boxes))]
+    return solve(boxes, boxes[0], all_locked)
+    
