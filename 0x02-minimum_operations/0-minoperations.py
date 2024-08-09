@@ -1,21 +1,19 @@
-uu#!/usr/bin/python3
-""" Minimum Operations
-    """
+#!/usr/bin/python3
+""" Minimum Operations """
 
 
-def minOperations(n: int) -> int:
-    """ Minimum Operations needed to get n H characters """
-    next = 'H'
-    body = 'H'
+def minOperations(n):
+    """ .... """
     op = 0
-    while (len(body) < n):
-        if n % len(body) == 0:
+    h = z = 1
+
+    while n > h:
+        if n % h == 0:
+            z = h
+            h += h
             op += 2
-            next = body
-            body += body
         else:
+            h += z
             op += 1
-            body += next
-    if len(body) != n:
-        return 0
+
     return op
