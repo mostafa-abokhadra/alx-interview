@@ -6,7 +6,6 @@ def minOperations(n):
     """ .... """
     op = 0
     h = z = 1
-
     while n > h:
         if n % h == 0:
             z = h
