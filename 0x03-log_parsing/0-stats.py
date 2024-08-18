@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 """ log parsing
 """
+
+
 # import functools
 # import sys
-
-
 # def add(a, b):
 #     """add 2 numbers
 #     """
 #     return a + b
-
-
 # def metrics():
 #     """
 #     <IP Address> - [<date>] "GET /projects/260 HTTP/1.1"
@@ -46,12 +44,10 @@
 #     print("File size: {}".format(functools.reduce(add, fileSizes)))
 #     for key, value in sorted(statusNumbers.items()):
 #         print("{}: {}".format(key, value))
-
-
 # if __name__ == '__main__':
 #     metrics()
-
 import sys
+
 
 if __name__ == '__main__':
 
