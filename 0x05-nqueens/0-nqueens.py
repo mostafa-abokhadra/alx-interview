@@ -1,53 +1,68 @@
 #!/usr/bin/python3
 """
-N queens
+Solution to the nqueens problem
 """
 import sys
 
 
-def valid(curr, row, col):
+def backtrack(r, n, cols, pos, neg, board):
     """
-    Functions that checks if we can
-    place a queen on a certein square
+    backtrack function to find solution
     """
-    for r, c in curr:
-        if r == row or c == col or abs(r - row) == abs(c - col):
-            return False
-    return True
-
-
-def nqueens(n, row=0, curr=None):
-    """
-    Recursive solution for the N-queens problem
-    """
-    if curr is None:
-        curr = []
-
-    # Base case: All queens are placed
-    if row == n:
-        print(curr)
+    if r == n:
+        res = []
+        for l in range(len(board)):
+            for k in range(len(board[l])):
+                if board[l][k] == 1:
+                    res.append([l, k])
+        print(res)
         return
 
-    for col in range(n):
-        if valid(curr, row, col):
-            curr.append([row, col])  # Place the queen
-            nqueens(n, row + 1, curr)  # Recur to place the next queen
-            curr.pop()  # Backtrack: remove the queen and try the next column
+    for c in range(n):
+        if c in cols or (r + c) in pos or (r - c) in neg:
+            continue
+
+        cols.add(c)
+        pos.add(r + c)
+        neg.add(r - c)
+        board[r][c] = 1
+
+        backtrack(r+1, n, cols, pos, neg, board)
+
+        cols.remove(c)
+        pos.remove(r + c)
+        neg.remove(r - c)
+        board[r][c] = 0
+
+
+def nqueens(n):
+    """
+    Solution to nqueens problem
+    Args:
+        n (int): number of queens. Must be >= 4
+    Return:
+        List of lists representing coordinates of each
+        queen for all possible solutions
+    """
+    cols = set()
+    pos_diag = set()
+    neg_diag = set()
+    board = [[0] * n for i in range(n)]
+
+    backtrack(0, n, cols, pos_diag, neg_diag, board)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    n = sys.argv
+    if len(n) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
-
     try:
-        n = int(sys.argv[1])
+        nn = int(n[1])
+        if nn < 4:
+            print("N must be at least 4")
+            sys.exit(1)
+        nqueens(nn)
     except ValueError:
         print("N must be a number")
         sys.exit(1)
-
-    if n < 4:
-        print("N must be at least 4")
-        sys.exit(1)
-
-    nqueens(n)
