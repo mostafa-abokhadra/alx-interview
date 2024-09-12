@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" rotating a matrix by 90-Degree
+""" rotating a matrix 90-Degree
 """
 
 
@@ -9,14 +9,6 @@ def rotate_2d_matrix(matrix):
     Args:
         matrix: 2d array
     """
-
-    # first method came to my Big Brain 😂💚
-    # i noticed that when you rotate the matrix 90 degree
-    # the first row became the last column
-    # 2nd row became the 2nd column, and so on
-    # lat row becam 1st column
-
-    # rotated_arr = [[None] * len(matrix)] * len(matrix)
 
     i = 0
     column_idx = 0
